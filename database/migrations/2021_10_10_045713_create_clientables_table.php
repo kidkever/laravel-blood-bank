@@ -3,17 +3,18 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateClientablesTable extends Migration {
+class CreateClientablesTable extends Migration
+{
 
 	public function up()
 	{
-		Schema::create('clientables', function(Blueprint $table) {
+		Schema::create('clientables', function (Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('client_id')->unsigned();
 			$table->integer('clientable_id');
 			$table->string('clientable_type');
-			$table->boolean('is_read');
+			$table->boolean('is_read')->default(false);
 		});
 	}
 

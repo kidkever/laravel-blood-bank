@@ -4,16 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ContactUs extends Model 
+class ContactUs extends Model
 {
 
     protected $table = 'contact_us';
     public $timestamps = true;
     protected $fillable = array('subject', 'message', 'client_id');
 
-    public function clients()
+    public function client()
     {
-        return $this->hasMany('Client');
+        return $this->belongsTo(Client::class);
     }
-
 }

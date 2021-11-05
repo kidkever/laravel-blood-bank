@@ -18,8 +18,9 @@ class Client extends Authenticatable
     ];
     protected $table = 'clients';
     public $timestamps = true;
-    // protected $fillable = array('name', 'email', 'd_o_b', 'blood_type_id', 'last_donation_date', 'city_id', 'mobile_num', 'password', 'pin_code');
-    protected $guarded = [];
+    protected $fillable = array('name', 'email', 'd_o_b', 'blood_type_id', 'last_donation_date', 'city_id', 'mobile_num', 'password', 'pin_code');
+    // protected $guarded = [];
+
 
     public function bloodType()
     {
@@ -28,36 +29,41 @@ class Client extends Authenticatable
 
     public function city()
     {
-        return $this->belongsTo('City');
+        return $this->belongsTo(City::class);
     }
 
     public function donationRequests()
     {
-        return $this->hasMany('DonationRequest');
+        return $this->hasMany(DonationRequest::class);
     }
 
     public function contactUsMessage()
     {
-        return $this->belongsTo('ContactUs');
+        return $this->hasMany(ContactUs::class);
     }
 
     public function governorates()
     {
-        return $this->morphedByMany('Governorate', 'clientable');
+        return $this->morphedByMany(Governorate::class, 'clientable');
     }
 
     public function notifications()
     {
-        return $this->morphedByMany('Notification', 'clientable')->withPivot('is_read');
+        return $this->morphedByMany(Notification::class, 'clientable')->withPivot('is_read');
     }
 
     public function posts()
     {
-        return $this->morphedByMany('Post', 'clientable');
+        return $this->morphedByMany(Post::class, 'clientable');
     }
 
     public function bloodTypes()
     {
-        return $this->morphedByMany('BloodType', 'clientable');
+        return $this->morphedByMany(BloodType::class, 'clientable');
+    }
+
+    public function fcmTokens()
+    {
+        return $this->hasMany(FcmToken::class);
     }
 }

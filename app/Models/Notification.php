@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Model 
+class Notification extends Model
 {
 
     protected $table = 'notifications';
@@ -13,12 +13,11 @@ class Notification extends Model
 
     public function donationRequest()
     {
-        return $this->belongsTo('DonationRequest');
+        return $this->belongsTo(DonationRequest::class);
     }
 
     public function clients()
     {
-        return $this->morphedByMany('Client', 'clientable')->withPivot('is_read');
+        return $this->morphedByMany(Client::class, 'clientable')->withPivot('is_read');
     }
-
 }

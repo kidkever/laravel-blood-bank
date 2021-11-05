@@ -1,0 +1,21 @@
+.swal2-success-circular-line-left,
+.swal2-success-circular-line-right {
+    background: none;
+}
+
+.swal2-popup.swal2-toast {
+    background: #343a40 !important;
+    box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.content-wrapper {
+    position: relative;
+}
+
+section.content > nav {
+    position: absolute;
+    width: 98%;
+    bottom: 0;
+    justify-content: center;
+    display: flex;
+}

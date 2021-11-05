@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Governorate extends Model 
+class Governorate extends Model
 {
 
     protected $table = 'governorates';
@@ -13,12 +13,16 @@ class Governorate extends Model
 
     public function cities()
     {
-        return $this->hasMany('City');
+        return $this->hasMany(City::class);
     }
 
     public function clients()
     {
-        return $this->morphedByMany('Client', 'clientable');
+        return $this->morphedByMany(Client::class, 'clientable');
     }
 
+    public function scopeSearch($q)
+    {
+        return empty(request()->table_search) ? $q : $q->where('name', 'like', '%' . request()->table_search . '%');
+    }
 }

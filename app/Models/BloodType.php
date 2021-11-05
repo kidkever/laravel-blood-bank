@@ -11,17 +11,17 @@ class BloodType extends Model
     public $timestamps = true;
     protected $fillable = array('name');
 
-    public function clients()
+    public function client()
     {
         return $this->hasMany(Client::class);
     }
 
     public function donationRequests()
     {
-        return $this->hasMany('DonationRequest');
+        return $this->hasMany(DonationRequest::class);
     }
 
-    public function clients_all()
+    public function clients()
     {
         return $this->morphedByMany(Client::class, 'clientable');
     }

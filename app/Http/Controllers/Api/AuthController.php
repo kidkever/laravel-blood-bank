@@ -6,6 +6,8 @@ use App\Models\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\RegisterFormRequest;
 use App\Http\Requests\Api\LoginFormRequest;
+use App\Models\City;
+use App\Models\Governorate;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +21,13 @@ class AuthController extends Controller
         $data['password'] = bcrypt($data['password']);
 
         $client = Client::create($data);
+        //$client->city->governorate_id
+
+        $governorate_id = City::where('id', $data['city_id'])->pluck('governorate_id');
+        $bloodType_id = $data['blood_type_id'];
+
+        $client->governorates()->attach($governorate_id);
+        $client->bloodTypes()->attach($bloodType_id);
 
         $token = $client->createToken(env('AUTH_TOKEN'))->plainTextToken;
 

@@ -14,15 +14,15 @@ use Illuminate\Support\Facades\Mail;
 class ProfileController extends Controller
 {
 
-    public function getProfile($id)
+    public function getProfile(Request $request)
     {
-        $client = Client::find($id);
-        return responseJson(1, 'success', $client);
+        return responseJson(1, 'success', $request->user());
     }
 
-    public function updateProfile(ProfileFormUpdateRequest $request, $id)
+    public function updateProfile(ProfileFormUpdateRequest $request)
     {
         $data = $request->all();
+        $id = $request->user()->id;
         $client = Client::find($id);
 
         if ($request->has('password')) {
@@ -40,7 +40,7 @@ class ProfileController extends Controller
 
     public function forgotPassword(Request $request)
     {
-        $client = Client::where('mobile_num', $request->mobile_num)->first();
+        $client = Client::where('email', $request->email)->first();
 
         if ($client) {
             $code = rand(1111, 9999);
@@ -57,9 +57,9 @@ class ProfileController extends Controller
         }
     }
 
-    public function resetPassword(ResetPasswordFormRequest $request, $id)
+    public function resetPassword(ResetPasswordFormRequest $request)
     {
-        $client = Client::find($id);
+        $client = Client::where('email', $request->email)->first();
 
         if ($request->pin_code == $client->pin_code) {
             $client->update([

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class City extends Model 
+class City extends Model
 {
 
     protected $table = 'cities';
@@ -13,17 +13,16 @@ class City extends Model
 
     public function clients()
     {
-        return $this->hasMany('Client');
+        return $this->hasMany(Client::class);
     }
 
     public function governorate()
     {
-        return $this->belongsTo('Governorate');
+        return $this->belongsTo(Governorate::class);
     }
 
     public function donationRequests()
     {
-        return $this->hasMany('DonationRequest');
+        return $this->hasMany(DonationRequest::class);
     }
-
 }

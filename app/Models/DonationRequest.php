@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DonationRequest extends Model 
+class DonationRequest extends Model
 {
 
     protected $table = 'donation_requests';
@@ -13,22 +13,21 @@ class DonationRequest extends Model
 
     public function bloodType()
     {
-        return $this->belongsTo('BloodType');
+        return $this->belongsTo(BloodType::class);
     }
 
     public function client()
     {
-        return $this->belongsTo('Client');
+        return $this->belongsTo(Client::class);
     }
 
     public function city()
     {
-        return $this->belongsTo('City');
+        return $this->belongsTo(City::class);
     }
 
     public function notification()
     {
-        return $this->hasOne('Notification');
+        return $this->hasOne(Notification::class);
     }
-
 }
