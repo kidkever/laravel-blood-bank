@@ -208,8 +208,54 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="{{ route('client.index') }}" class="nav-link">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-users-cog"></i>
+                <p>
+                  Users
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('user.index') }}" class="nav-link">
+                    <i class="fas fa-arrow-circle-right nav-icon"></i>
+                    <p>All Users</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('user.create') }}" class="nav-link">
+                    <i class="fas fa-plus-circle nav-icon"></i>
+                    <p>Add New User</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user-shield"></i>
+                <p>
+                  User Roles
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('role.index') }}" class="nav-link">
+                    <i class="fas fa-arrow-circle-right nav-icon"></i>
+                    <p>All Roles</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('role.create') }}" class="nav-link">
+                    <i class="fas fa-plus-circle nav-icon"></i>
+                    <p>Add New Role</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('client.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
                 <p>
                   Clients
                 </p>

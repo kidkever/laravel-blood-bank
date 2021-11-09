@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use GuzzleHttp\Middleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,6 +68,6 @@ class Kernel extends HttpKernel
         'role' => \Mindscms\Entrust\Middleware\EntrustRole::class,
         'permission' => \Mindscms\Entrust\Middleware\EntrustPermission::class,
         'ability' => \Mindscms\Entrust\Middleware\EntrustAbility::class,
-
+        'auto-check-permission' => \App\Http\Middleware\AutoCheckPermission::class,
     ];
 }

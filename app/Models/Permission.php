@@ -8,6 +8,11 @@ class Permission extends EntrustPermission
 {
   protected $guarded = [];
 
+  public function roles()
+  {
+    return $this->belongsToMany(Role::class);
+  }
+
   // public function parent()
   // {
   //   return $this->hasOne(Permission::class, 'id', 'parent');

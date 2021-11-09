@@ -9,6 +9,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DonationRequestController;
 use App\Http\Controllers\GovernorateController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,17 +33,17 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'auto-check-permission'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
     Route::resource('governorate', GovernorateController::class);
-    // Route::get('/governorate/search', [GovernorateController::class, 'search'])->name('governorate.search');
-
     Route::resource('city', CityController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('post', PostController::class);
+    Route::resource('role', RoleController::class);
+    Route::resource('user', UserController::class);
 
 
     //clients

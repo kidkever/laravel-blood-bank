@@ -42,7 +42,7 @@ class DashboardController extends Controller
             ->name('lineChartTest')
             ->type('line')
             ->size(['width' => 400, 'height' => 200])
-            ->labels($donationData['label'])
+            // ->labels($donationData['label'])
             ->datasets([
                 [
                     "label" => "Clients",
@@ -52,7 +52,7 @@ class DashboardController extends Controller
                     "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                     "pointHoverBackgroundColor" => "#fff",
                     "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                    'data' => $clientData['data'],
+                    // 'data' => $clientData['data'],
                 ],
                 [
                     "label" => "Donation Requests",
@@ -62,7 +62,7 @@ class DashboardController extends Controller
                     "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
                     "pointHoverBackgroundColor" => "#fff",
                     "pointHoverBorderColor" => "rgba(220,220,220,1)",
-                    'data' => $donationData['data'],
+                    // 'data' => $donationData['data'],
                 ]
             ])
             ->options([]);
